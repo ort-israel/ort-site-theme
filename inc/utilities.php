@@ -24,7 +24,6 @@ class utilities {
 		add_filter( 'use_block_editor_for_post_type', '__return_false', 10 );
 		add_action( 'template_include', [ $this, 'school_search_tamplate' ] );
 		add_action( 'init', [ $this, 'add_excerpt_support_for_pages' ] );
-		add_filter( 'acf/fields/google_map/api', [ $this, 'acf_google_map_api' ] );
 	}
 
 	public function add_excerpt_support_for_pages() {
@@ -240,12 +239,6 @@ class utilities {
 				<?php } ?>
             </select>
 		<?php }
-	}
-
-	public function acf_google_map_api( $api ) {
-		$api['key'] = 'AIzaSyCItRidIyX9iIakOyQvbQ7fys-d-gdI_YI';
-
-		return $api;
 	}
 
 	/* this function was written b/s of accessibility*/
