@@ -8,24 +8,45 @@
  */
 
 ?>
+<?php  /* put the main image of page as background image to entry header*/
+        $page=$wp_query->get_queried_object();
+        $page_id = $page->ID;
+        $url = wp_get_attachment_url( get_post_thumbnail_id( $page_id) ); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+	<header class="entry-header splashed-header" style='background-image:url("<?php echo $url ?>")'>
+        <div class="title-desc">
+		<?php the_title( '<h1 class="entry-title" tabindex="0">', '</h1>' );?>
+        <div class="page-description" tabindex="0"> <?php echo get_only_exc() ?> </div>
+        </div>
 	</header><!-- .entry-header -->
 
-	<?php ort_site_2019_post_thumbnail(); ?>
-
+    
 	<div class="entry-content">
 		<?php
 		the_content();
 
-		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ort_site_2019' ),
-			'after'  => '</div>',
-		) );
 		?>
 	</div><!-- .entry-content -->
+
+    <?php $post_objects = get_field('choice expert');
+    if( $post_objects ):?>
+
+    <div class="expert">
+
+        <h2 class="title-expert"><?php _e('our expert','ort_site_2019'); ?></h2>
+
+            <ul>
+                <?php foreach( $post_objects as $post_object): ?>
+                    <li>
+                        <?php echo $utils->get_exp_det( $post_object->ID); ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+    </div>
+        <?php endif;?>
+
+
 
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">

@@ -13,31 +13,44 @@ get_header();
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-		<?php if ( have_posts() ) : ?>
+            <?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'ort_site_2019' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
+			<header class="page-header splashed-header">
+                <div class="title-desc">
+                    <h1 class="page-title">
+                        <?php
+                        /* translators: %s: search query. */
+                        printf( esc_html__( 'Search Results for:%s', 'ort_site_2019' ), '<div>' . get_search_query() . '</div>' );
+                        ?>
+                    </h1>
+                </div>
 			</header><!-- .page-header -->
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+            <?php /* to account the number of results */
+            $all_search =new WP_Query("s=$s&showposts=-1");
+            $key = esc_html($s, 1); $count = $all_search->post_count;?>
+            <span class="search-terms">
+                <?php echo $count . ' '; _e('articles','ort_site_2019'); ?>
+            </span>
+           <div class="articles">
+               <?php wp_reset_query();
+                /* Start the Loop */
+                while ( have_posts() ) :
+                    the_post();
 
-			endwhile;
+                    /**
+                     * Run the loop for the search to output the results.
+                     * If you want to overload this in a child theme then include a file
+                     * called content-search.php and that will be used instead.
+                     */
+                    set_query_var( 'utils', $utils );
+                    get_template_part( 'template-parts/content', 'search' );
 
+                endwhile;
+			?>
+			</div>
+            <?php
 			the_posts_navigation();
 
 		else :

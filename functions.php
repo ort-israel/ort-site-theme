@@ -44,7 +44,8 @@ if ( ! function_exists( 'ort_site_2019_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'ort_site_2019' ),
+			'menu-1'    => esc_html__( 'Primary', 'ort_site_2019' ),
+			'languages' => esc_html__( 'Languages', 'ort_site_2019' ),
 		) );
 
 		/*
@@ -79,6 +80,7 @@ if ( ! function_exists( 'ort_site_2019_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
+		add_theme_support( 'post-formats', array( 'link' ) );
 	}
 endif;
 add_action( 'after_setup_theme', 'ort_site_2019_setup' );
@@ -96,6 +98,7 @@ function ort_site_2019_content_width() {
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$GLOBALS['content_width'] = apply_filters( 'ort_site_2019_content_width', 640 );
 }
+
 add_action( 'after_setup_theme', 'ort_site_2019_content_width', 0 );
 
 /**
@@ -114,23 +117,63 @@ function ort_site_2019_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 }
+
 add_action( 'widgets_init', 'ort_site_2019_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
 function ort_site_2019_scripts() {
-	wp_enqueue_style( 'ort_site_2019-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'ort_site_2019-style', get_stylesheet_uri(), array(), time() );
+
+	wp_enqueue_style( 'ort_site_2019-arabic-fonts', ort_site_2019_fonts_url(), array(), null );
 
 	wp_enqueue_script( 'ort_site_2019-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'ort_site_2019-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
+	wp_enqueue_script( 'ort-scripts', get_template_directory_uri() . '/js/ort-scripts.js', array(), time(), true );
+
+	wp_enqueue_script( 'ort-accessibility-scripts', get_template_directory_uri() . '/js/ort-accessibility-scripts.js', array(), time(), true );
+
+    wp_enqueue_script( 'object-fit-images', get_template_directory_uri() . '/js/ofi.min.js', array(), '3.2.4', true );
+
+
+    /* Add localization strings */
+	// get strings from language files, and put them into javascript variables
+	$params = array(
+		'langEnglish' => __( 'English', 'ort_site_2019' ),
+		'langArabic'  => __( 'Arabic', 'ort_site_2019' ),
+		'search'      => __( 'Search', 'ort_site_2019' ),
+	);
+	// create inline definitions of these vars, for use in the script.js file
+	wp_localize_script( 'ort-scripts', 'OrtScriptParams', $params );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
+
 add_action( 'wp_enqueue_scripts', 'ort_site_2019_scripts' );
+
+
+/**
+ * Add Google fonts - Alef
+ * Taken from: http://themeshaper.com/2014/08/13/how-to-add-google-fonts-to-wordpress-themes/
+ * @return string
+ */
+function ort_site_2019_fonts_url() {
+
+	$font_families   = array();
+	$font_families[] = 'Mada:400,700';
+	$query_args      = array(
+		'family' => urlencode( implode( '|', $font_families ) ),
+		'subset' => urlencode( 'arabic' ),
+	);
+	$fonts_url       = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+
+	return esc_url_raw( $fonts_url );
+}
 
 /**
  * Implement the Custom Header feature.
@@ -158,4 +201,28 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+/**
+ * Out theme specific additions.
+ */
+require get_template_directory() . '/inc/Categories.php';
+
+require get_template_directory() . '/inc/home-functions.php';
+
+require get_template_directory() . '/inc/utilities.php';
+
+require get_template_directory() . '/inc/Menu_With_Description.php';
+
+/* this function was written to play the video in main banner iPod|iPhone|iPad */
+function add_autoplay_fix_ios() {?>
+    <script type="text/javascript">
+        var myvideos = document.querySelectorAll('.background-mainimg video');
+        if (navigator.userAgent.match( /(iPod|iPhone|iPad)/ ) ) {
+            for (let index = 0; index < myvideos.length; index++) {
+                myvideos[index].setAttribute("playsinline","");
+            }
+        }
+    </script>
+    <?php }
+
+add_action('wp_footer', 'add_autoplay_fix_ios');
 

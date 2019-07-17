@@ -8,30 +8,36 @@
  */
 
 get_header();
+
+$categories = get_the_category();
+
 ?>
+<!-- add class to arabs posts -->
+    <div id="primary" class="content-area<?php if($categories[0]->term_id==314) echo "-arabs"; ?>">
+        <main id="main" class="site-main">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+			<?php
+			while ( have_posts() ) :
+				the_post();
+			    if(in_category('experts')){
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+                    get_template_part( 'template-parts/content', 'experts' );
+                }
+				else if ( $utils->post_is_in_descendant_category( $utils->schools_and_colleges_cat_id ) ) {
+					set_query_var( 'utils', $utils );
+					get_template_part( 'template-parts/content', 'single-school' );
 
-			get_template_part( 'template-parts/content', get_post_type() );
+				} else{
+                    set_query_var( 'utils', $utils );
+					get_template_part( 'template-parts/content', get_post_format() );
+				}
 
-			the_post_navigation();
+			endwhile; // End of the loop.
+			?>
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
+        </main><!-- #main -->
+    </div><!-- #primary -->
 
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();
