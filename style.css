@@ -1511,7 +1511,7 @@ body.arial_font_on .fas {
       text-decoration: underline; } }
   .publications-zone .more-publications {
     display: inline-block;
-    margin: 2rem 0; }
+    margin: 0; }
     .publications-zone .more-publications a {
       color: #fff;
       background-color: #d00557;
@@ -1560,10 +1560,13 @@ body.arial_font_on .fas {
         grid-template-areas: " art ." "art title" "art excerpt" "pub button" "pub ."; }
         .publications-zone .wrapper > h2 {
           grid-area: title;
-          align-self: start; }
+          align-self: end;
+          line-height: 1.5; }
         .publications-zone .wrapper > h3 {
           grid-area: excerpt;
-          align-self: center; }
+          align-self: start;
+          width: 90%;
+          line-height: 1.3; }
       .publications-zone .articles {
         grid-area: art; }
         .publications-zone .articles ul {
