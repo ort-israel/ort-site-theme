@@ -1946,16 +1946,16 @@ section.isreal-pride {
           padding: 0; }
           #page section.special-educators ul li:not(:last-child) {
             margin-left: 2rem; }
-      #page section.special-educators:not(.touch-device) a .post-name, #page section.special-educators:not(.touch-device) a .post-exc {
+      #page section.special-educators:not(.touch-device) li > a .post-name, #page section.special-educators:not(.touch-device) li > a .post-exc {
         visibility: hidden; }
-      #page section.special-educators:not(.touch-device) a img {
+      #page section.special-educators:not(.touch-device) li > a img {
         filter: brightness(100%);
         -webkit-filter: brightness(100%); }
-      #page section.special-educators:not(.touch-device) a:hover, #page section.special-educators:not(.touch-device) a:focus {
+      #page section.special-educators:not(.touch-device) li > a:hover, #page section.special-educators:not(.touch-device) li > a:focus {
         background-color: #d8d8d8; }
-        #page section.special-educators:not(.touch-device) a:hover .post-name, #page section.special-educators:not(.touch-device) a:hover .post-exc, #page section.special-educators:not(.touch-device) a:focus .post-name, #page section.special-educators:not(.touch-device) a:focus .post-exc {
+        #page section.special-educators:not(.touch-device) li > a:hover .post-name, #page section.special-educators:not(.touch-device) li > a:hover .post-exc, #page section.special-educators:not(.touch-device) li > a:focus .post-name, #page section.special-educators:not(.touch-device) li > a:focus .post-exc {
           visibility: visible; }
-        #page section.special-educators:not(.touch-device) a:hover img, #page section.special-educators:not(.touch-device) a:focus img {
+        #page section.special-educators:not(.touch-device) li > a:hover img, #page section.special-educators:not(.touch-device) li > a:focus img {
           filter: brightness(60%);
           -webkit-filter: brightness(60%); } }
 
