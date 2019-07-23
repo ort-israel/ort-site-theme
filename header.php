@@ -22,7 +22,8 @@
           integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.typekit.net/pko8dbv.css">
     <link href="https://fonts.googleapis.com/css?family=Mada:400,700&display=swap&subset=arabic" rel="stylesheet">
-	<link rel="canonical" href="https://mapa-linux-new.ort.org.il<?php echo $_SERVER['REQUEST_URI']; ?>"/>
+    <link rel="canonical"
+          href="<?php echo filter_input( INPUT_SERVER, 'SERVER_NAME' ) . filter_input( INPUT_SERVER, 'REQUEST_URI' ); ?>"/>
 	<?php wp_head(); ?>
 </head>
 
