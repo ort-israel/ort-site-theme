@@ -118,7 +118,7 @@ if ( ! function_exists( 'ort_site_2019_post_thumbnail' ) ) :
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function ort_site_2019_post_thumbnail( $size = 'post-thumbnail' ) {
+	function ort_site_2019_post_thumbnail( $size = 'thumbnail' ) {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
@@ -127,7 +127,7 @@ if ( ! function_exists( 'ort_site_2019_post_thumbnail' ) ) :
 			?>
 
             <div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
+				<?php the_post_thumbnail($size); ?>
             </div><!-- .post-thumbnail -->
 
 		<?php else : ?>
