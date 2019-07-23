@@ -2418,6 +2418,12 @@ blockquote {
     border: none;
     padding: 1.5rem;
     width: 100%; }
+  .comments-area form .comment-form-author .error,
+  .comments-area form .comment-form-email .error,
+  .comments-area form .comment-form-url .error {
+    color: #ff0000; }
+  .comments-area form .comment-form-comment .error {
+    color: #ff0000; }
   .comments-area form .submit {
     border: none;
     color: #fff;
@@ -2449,14 +2455,16 @@ blockquote {
       .comments-area .comment-form-url {
         width: 25%;
         display: inline-block;
-        margin-left: 4rem; } }
+        margin-left: 4rem;
+        vertical-align: top; } }
   @media screen and (min-width: 1025px) {
     .comments-area .comment-form-author,
     .comments-area .comment-form-email,
     .comments-area .comment-form-url {
       width: 25%;
       display: inline-block;
-      margin-left: 4rem; }
+      margin-left: 4rem;
+      vertical-align: top; }
     .comments-area .form-submit {
       display: flex;
       flex-direction: row;
