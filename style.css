@@ -623,17 +623,17 @@ a {
   text-decoration: none; }
   .search-results a, .main-navigation a {
     text-decoration: none; }
-  .single a, .page:not(.special-page) .page a, .search-no-results .page-content a {
+  .single a, .error404 .page-content a, .page:not(.special-page) .page a, .search-no-results .page-content a {
     text-decoration: none;
     border-bottom: 1px dotted; }
-    .single a:visited, .page:not(.special-page) .page a:visited, .search-no-results .page-content a:visited {
+    .single a:visited, .error404 .page-content a:visited, .page:not(.special-page) .page a:visited, .search-no-results .page-content a:visited {
       color: #464646; }
-    .single a:hover, .single a:focus, .single a:active, .page:not(.special-page) .page a:hover, .page:not(.special-page) .page a:focus, .page:not(.special-page) .page a:active, .search-no-results .page-content a:hover, .search-no-results .page-content a:focus, .search-no-results .page-content a:active {
+    .single a:hover, .single a:focus, .single a:active, .error404 .page-content a:hover, .error404 .page-content a:focus, .error404 .page-content a:active, .page:not(.special-page) .page a:hover, .page:not(.special-page) .page a:focus, .page:not(.special-page) .page a:active, .search-no-results .page-content a:hover, .search-no-results .page-content a:focus, .search-no-results .page-content a:active {
       color: #d00557;
       border-bottom: 1px solid; }
-    .single a:focus, .page:not(.special-page) .page a:focus, .search-no-results .page-content a:focus {
+    .single a:focus, .error404 .page-content a:focus, .page:not(.special-page) .page a:focus, .search-no-results .page-content a:focus {
       outline: thin dotted; }
-    .single a:hover, .single a:active, .page:not(.special-page) .page a:hover, .page:not(.special-page) .page a:active, .search-no-results .page-content a:hover, .search-no-results .page-content a:active {
+    .single a:hover, .single a:active, .error404 .page-content a:hover, .error404 .page-content a:active, .page:not(.special-page) .page a:hover, .page:not(.special-page) .page a:active, .search-no-results .page-content a:hover, .search-no-results .page-content a:active {
       outline: 0; }
   footer#colophon a {
     color: #fff;
