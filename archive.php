@@ -106,7 +106,8 @@ get_header();
 
                 </section>
 
-                <button class="join-us" onclick="window.location.href='https://mapa-linux-test.ort.org.il/ort-site-2019/jobs/'"><?php _e('join to us','ort_site_2019')?></button>
+                <?php $href=get_bloginfo('url'); ?>
+                <button class="join-us" onclick="window.location.href='<?php echo $href ?>/jobs/'"><?php _e('join to us','ort_site_2019')?></button>
             <?php  } ?>
         </main><!-- #main -->
     </div><!-- #primary -->
