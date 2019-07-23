@@ -5154,10 +5154,12 @@ table {
     background-color: transparent; }
     .site-footer .footer-details > .elementor-container > .elementor-row .elementor-menu-toggle i:before {
       content: "\f067";
+      font-family: FontAwesome;
       position: relative;
       top: 0rem; }
     .site-footer .footer-details > .elementor-container > .elementor-row .elementor-menu-toggle.elementor-active i:before {
       content: "\f068";
+      font-family: FontAwesome;
       position: relative;
       top: 0rem; }
   .site-footer .footer-details > .elementor-container > .elementor-row .logos-area.elementor-column > .elementor-column-wrap.elementor-element-populated {
