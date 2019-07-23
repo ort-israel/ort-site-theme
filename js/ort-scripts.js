@@ -99,7 +99,7 @@ jQuery(document).ready(function ($) {
 
         //Set the css to the current ".sub-menu" item
         $(this).css('right',-parent_li_right_offset);
-        $(this).css('padding-right',parent_li_right_offset);
+        $(this).css('padding-right',Math.floor(parent_li_right_offset));
         $(this).css('padding-left', padding_left);
     });
 
