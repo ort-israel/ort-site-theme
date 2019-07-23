@@ -3462,7 +3462,8 @@ table {
       background: url("images/headerSplash-category-m.png") no-repeat;
       background-size: cover;
       background-position: right;
-      padding-bottom: 3rem; }
+      padding-bottom: 3rem;
+      padding-left: calc(100% - 36rem); }
       .page .title-desc h1,
       .category .title-desc h1,
       .search .title-desc h1,
