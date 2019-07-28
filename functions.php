@@ -81,6 +81,8 @@ if ( ! function_exists( 'ort_site_2019_setup' ) ) :
 			'flex-height' => true,
 		) );
 		add_theme_support( 'post-formats', array( 'link' ) );
+
+		update_option('medium_crop', 1);
 	}
 endif;
 add_action( 'after_setup_theme', 'ort_site_2019_setup' );
