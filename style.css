@@ -5478,3 +5478,19 @@ object {
   display: block; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* 
+add in 10/10/2019
+Style for the text area that is added to "nedded form" on the About page
+*/
+
+#wpcf7-f30765-p106-o1 > form > p:nth-child(5) {
+  width: 100%;
+}
+
+#job-description {
+  background-color: whitesmoke;
+  border: none;
+  resize: none;
+}

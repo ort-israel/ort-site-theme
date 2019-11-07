@@ -126,7 +126,7 @@ add_action( 'widgets_init', 'ort_site_2019_widgets_init' );
  * Enqueue scripts and styles.
  */
 function ort_site_2019_scripts() {
-	wp_enqueue_style( 'ort_site_2019-style', get_stylesheet_uri(), array(), time() );
+	wp_enqueue_style( 'ort_site_2019-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version') );
 
 	wp_enqueue_style( 'ort_site_2019-arabic-fonts', ort_site_2019_fonts_url(), array(), null );
 
@@ -134,9 +134,9 @@ function ort_site_2019_scripts() {
 
 	wp_enqueue_script( 'ort_site_2019-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'ort-scripts', get_template_directory_uri() . '/js/ort-scripts.js', array(), time(), true );
+	wp_enqueue_script( 'ort-scripts', get_template_directory_uri() . '/js/ort-scripts.js', array(), wp_get_theme()->get('Version'), true );
 
-	wp_enqueue_script( 'ort-accessibility-scripts', get_template_directory_uri() . '/js/ort-accessibility-scripts.js', array(), time(), true );
+	wp_enqueue_script( 'ort-accessibility-scripts', get_template_directory_uri() . '/js/ort-accessibility-scripts.js', array(), wp_get_theme()->get('Version'), true );
 
     wp_enqueue_script( 'object-fit-images', get_template_directory_uri() . '/js/ofi.min.js', array(), '3.2.4', true );
 
