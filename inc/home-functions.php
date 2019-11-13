@@ -234,6 +234,34 @@ function newsletter_zone() {
 
 add_shortcode( 'newsletter', 'newsletter_zone' );
 
+
+function videort_zone() {
+	global $utils;
+	$idObj         = get_category_by_slug( 'videort' );
+	$id_videort = $idObj->term_id;
+	$cat_children  = get_categories( array( 'child_of' => $id_videort ) );
+
+	echo '<div class="newsletter">';
+
+	echo '<ul class="important-posts">';
+	foreach ( $cat_children as $children ) {
+		$args      = array(
+			'posts_per_page' => 4,
+			'category__in'   => array( $children->term_id )
+		);
+		$cat_query = new WP_Query( $args );
+		while ( $cat_query->have_posts() ) : $cat_query->the_post();
+			set_query_var( 'utils', $utils );
+			get_template_part( 'template-parts/content', 'link' );
+		endwhile;
+	}
+
+	echo '</ul>';
+	echo '</div>';
+}
+
+add_shortcode( 'videort', 'videort_zone' );
+
 function special_educators_zone() {
 	$idObj        = get_category_by_slug( 'people-education' );
 	$id_education = $idObj->term_id;

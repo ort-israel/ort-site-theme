@@ -4586,7 +4586,8 @@ table {
     width: calc( 16.66% - 2 * 1rem);
     margin: auto 1rem; } }
 
-.recent-newsletters {
+.recent-newsletters,
+.recent-videos{
   padding: 0 1rem; }
   .recent-newsletters .important-posts {
     display: flex;
