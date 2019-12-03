@@ -138,7 +138,7 @@ add_action( 'widgets_init', 'ort_site_2019_widgets_init' );
  * Enqueue scripts and styles.
  */
 function ort_site_2019_scripts() {
-	wp_enqueue_style( 'ort_site_2019-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version') );
+	wp_enqueue_style( 'ort_site_2019-style', get_stylesheet_uri(), array(), filemtime(get_stylesheet_directory() . '/style.css') );
 
 	wp_enqueue_style( 'ort_site_2019-arabic-fonts', ort_site_2019_fonts_url(), array(), null );
 
