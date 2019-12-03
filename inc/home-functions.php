@@ -199,6 +199,7 @@ function publications_zone() {
 	echo '<ul class="important-posts">';
 	while ( $cat_query->have_posts() ) : $cat_query->the_post();
 		set_query_var( 'utils', $utils );
+		set_query_var( 'thumbnail_size', 'rectangle_wide' );
 		get_template_part( 'template-parts/content', 'link' );
 	endwhile;
 	echo '</ul>';
@@ -224,6 +225,7 @@ function newsletter_zone() {
 		$cat_query = new WP_Query( $args );
 		while ( $cat_query->have_posts() ) : $cat_query->the_post();
 			set_query_var( 'utils', $utils );
+			set_query_var( 'thumbnail_size', 'rectangle_narrow' );
 			get_template_part( 'template-parts/content', 'link' );
 		endwhile;
 	}
@@ -243,7 +245,7 @@ function videort_zone() {
 
 	echo '<div class="newsletter">';
 
-	echo '<ul class="important-posts">';
+	echo '<section class="important-posts">';
 	foreach ( $cat_children as $children ) {
 		$args      = array(
 			'posts_per_page' => 4,
@@ -256,7 +258,7 @@ function videort_zone() {
 		endwhile;
 	}
 
-	echo '</ul>';
+	echo '</section>';
 	echo '</div>';
 }
 

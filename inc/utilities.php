@@ -242,25 +242,29 @@ class utilities {
 	}
 
 	/* this function was written b/s of accessibility*/
-	public function ort_site_2019_post_thumbnail_no_link() {
+	public function ort_site_2019_post_thumbnail_no_link($thumbnail_size = 'medium') {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
 		if ( is_singular() ) :?>
 
             <div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
+				<?php the_post_thumbnail($thumbnail_size, array(
+					'alt' => the_title_attribute( array(
+						'echo' => false,
+					) ),
+				) ); ?>
             </div><!-- .post-thumbnail -->
 
 		<?php else : ?>
 
             <div class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 				<?php
-				the_post_thumbnail( 'medium', array(
+				the_post_thumbnail($thumbnail_size, array(
 					'alt' => the_title_attribute( array(
 						'echo' => false,
 					) ),
-				) ); ?>
+				)  ); ?>
 
             </div>
 

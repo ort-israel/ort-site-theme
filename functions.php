@@ -83,6 +83,18 @@ if ( ! function_exists( 'ort_site_2019_setup' ) ) :
 		add_theme_support( 'post-formats', array( 'link' ) );
 
 		update_option('medium_crop', 1);
+
+		// define thumbnail sizes
+		define( 'RECTANGLE_WIDE_WIDTH', 300 ); /* videort post */
+		define( 'RECTANGLE_WIDE_HEIGHT', 170 );
+
+		add_image_size( 'rectangle_wide', RECTANGLE_WIDE_WIDTH, RECTANGLE_WIDE_HEIGHT, true );
+
+		// define thumbnail sizes
+		define( 'RECTANGLE_NARROW_WIDTH', 270 ); /* newsletter post */
+		define( 'RECTANGLE_NARROW_HEIGHT', 245 );
+
+		add_image_size( 'rectangle_narrow', RECTANGLE_NARROW_WIDTH, RECTANGLE_NARROW_HEIGHT, true );
 	}
 endif;
 add_action( 'after_setup_theme', 'ort_site_2019_setup' );
