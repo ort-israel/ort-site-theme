@@ -4576,24 +4576,29 @@ table {
       width: 60%; } }
 
 .category-26 div.post,
-.category-316 div.post {
+.category-316 div.post,
+category-364 div.post {
   margin: 0 auto 3.5rem;
   text-align: center; }
 @media screen and (min-width: 767px) {
   .category-26 .articles,
-  .category-316 .articles {
+  .category-316 .articles,
+  category-364 .articles {
     display: flex; }
   .category-26 div.post,
-  .category-316 div.post {
+  .category-316 div.post,
+  category-364 div.post {
     width: calc( 25% - 2 * 1rem);
     margin: auto 1rem; } }
 @media screen and (min-width: 1025px) {
   .category-26 .articles,
-  .category-316 .articles {
+  .category-316 .articles,
+  category-364 .articles {
     max-width: 135rem;
     margin: 0 auto; }
   .category-26 div.post,
-  .category-316 div.post {
+  .category-316 div.post,
+  category-364 div.post {
     width: calc( 16.66% - 2 * 1rem);
     margin: auto 1rem; } }
 
