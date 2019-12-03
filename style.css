@@ -729,6 +729,12 @@ a {
         .main-navigation .menu > li:hover li:hover a, .main-navigation .menu > li:focus li:hover a {
           text-decoration: underline; } }
 
+#menu-languages a {
+  display: inline-block;
+  border-top: 4px solid transparent; }
+  #menu-languages a:hover {
+    border-color: #464646; }
+
 .comment-navigation, .posts-navigation, .post-navigation {
   	/*.nav-previous {
   		width: 50%;
