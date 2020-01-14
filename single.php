@@ -10,10 +10,9 @@
 get_header();
 
 $categories = get_the_category();
-
 ?>
 <!-- add class to arabs posts -->
-    <div id="primary" class="content-area<?php if($categories[0]->term_id==314) echo "-arabs"; ?>">
+    <div id="primary" class="content-area<?php if($categories && $categories[0]->term_id==314) echo "-arabs"; ?>">
         <main id="main" class="site-main">
 
 			<?php

@@ -34,6 +34,11 @@ class utilities {
 	public function check_cat_children() {
 		global $wpdb;
 		$term  = get_queried_object();
+
+		//$term is not a category (as in cool_timeline archive)
+		if(!property_exists($term, 'term_id'))
+		    return false;
+
 		$check = $wpdb->get_results( " SELECT * FROM wp_term_taxonomy WHERE parent = '$term->term_id' " );
 		if ( $check ) {
 			return true;

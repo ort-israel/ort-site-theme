@@ -29,7 +29,7 @@
 			$thumbnail_size = isset( $thumbnail_size ) ? $thumbnail_size : 'medium'; // in case a $thumbnail_size hasn't been defined
 			$utils->ort_site_2019_post_thumbnail_no_link( $thumbnail_size ); ?>
             <span class="excerpt"><?php the_title(); ?></span>
-			<?php if ( $post_category[0]->term_id == 25 ) { ?>
+			<?php if ( $post_category && $post_category[0]->term_id == 25 ) { ?>
                 <div class="post-date-author">
 					<?php $correspondence_date = get_field( 'date' );
 					$correspondence_author     = get_field( 'author' ); ?>

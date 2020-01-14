@@ -12,7 +12,6 @@ jQuery(document).ready(function ($) {
     }, 50);
 
     // Touch Device Detection
-    console.log(document.documentElement);
     var isTouchDevice = 'ontouchstart' in document.documentElement;
     if( isTouchDevice ) {
         $('.isreal-pride').addClass('touch-device');
