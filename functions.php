@@ -138,6 +138,7 @@ add_action( 'widgets_init', 'ort_site_2019_widgets_init' );
  * Enqueue scripts and styles.
  */
 function ort_site_2019_scripts() {
+    wp_dequeue_style('ort_site_2019-style');
 	wp_enqueue_style( 'ort_site_2019-style', get_stylesheet_uri(), array(), filemtime(get_stylesheet_directory() . '/style.css') );
 
 	wp_enqueue_style( 'ort_site_2019-arabic-fonts', ort_site_2019_fonts_url(), array(), null );
@@ -237,6 +238,24 @@ function add_autoplay_fix_ios() {?>
         }
     </script>
     <?php }
-
 add_action('wp_footer', 'add_autoplay_fix_ios');
 
+/* Change archive title if cool timeline archive */
+function ort_archive_title($title){
+    if ("Timeline Stories" === $title) {
+        $title = __('Timeline Stories', 'ort_site_2019');
+    }
+
+    return $title;
+}
+add_filter("post_type_archive_title", "ort_archive_title", 10, 2);
+
+/* Remove description if cool timeline archive */
+function ort_post_type_description($description, $post_type_obj){
+    if ("cool_timeline" === $post_type_obj->name) {
+        $description = NULL;
+    }
+
+    return $description;
+}
+add_filter("get_the_post_type_description", "ort_post_type_description", 10, 2);

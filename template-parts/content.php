@@ -71,6 +71,11 @@
 			get_the_title()
 		) );
 
+		//Tsofiya 8/1/20: add post image to posts of cool-timeline
+		if( get_queried_object()->post_type == 'cool_timeline' ){
+            $utils->ort_site_2019_post_thumbnail_no_link('large');
+        }
+
 		?>
     </div><!-- .entry-content -->
 
