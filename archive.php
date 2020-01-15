@@ -17,6 +17,8 @@ get_header();
 
         <?php $bool_value = 0;
         $term = get_queried_object();
+        //Tsofiya: slug changes in the code below and we want to save the first one for later use
+        $current_category_slug = (property_exists($term, 'slug')) ? $term->slug : "";
 
         $image = get_field('image', $term);
         /*we have 2 presentation of category page, horizontal and vertical */
@@ -32,6 +34,7 @@ get_header();
                 $term = $category_parent;
                 $term_child = get_queried_object();
                 $slug = $category_parent->slug;
+
             }
         }
 
@@ -100,9 +103,9 @@ get_header();
                         set_query_var('utils', $utils);
                         get_template_part('template-parts/content', 'category-vertical');
 
-                    } elseif ($cat_kind && (in_array('newsletter', $cat_kind) ||
-                        in_array('videort', $cat_kind) ||
-                        in_array('publications', $cat_kind))) {
+                    } elseif ($current_category_slug  && ($current_category_slug == 'videort' ||
+                            $current_category_slug == 'newsletter' ||
+                            $current_category_slug == 'publications')) {
                         /* to newsletter, videort and publications categories */
                         set_query_var('utils', $utils);
                         $thumbnail_size = $slug === 'newsletter' ? 'rectangle_narrow' : 'rectangle_wide';
