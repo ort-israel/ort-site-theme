@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ort-site-2019\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2020-01-14 09:37+0200\n"
-"PO-Revision-Date: 2020-01-14 09:38+0200\n"
+"POT-Creation-Date: 2020-01-21 07:46+0200\n"
+"PO-Revision-Date: 2020-01-21 07:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he_IL\n"
@@ -33,11 +33,23 @@ msgid ""
 "below or a search?"
 msgstr "אבל יש לנו הרבה תכנים אחרים שכדאי להציץ בהם!"
 
-#: archive.php:131 inc/home-functions.php:274
+#: category.php:66 category.php:72
+msgid "all subjects"
+msgstr "כל הנושאים"
+
+#: category.php:71
+msgid "news"
+msgstr "חדשות"
+
+#: category.php:78
+msgid "all years"
+msgstr "כל השנים"
+
+#: category.php:137 inc/home-functions.php:274
 msgid "read more people education  "
 msgstr "למדו עוד"
 
-#: archive.php:137
+#: category.php:143
 msgid "join to us"
 msgstr "היו שותפים לעשייה החינוכית"
 
@@ -200,7 +212,7 @@ msgstr ""
 msgid "facebook"
 msgstr ""
 
-#: inc/utilities.php:331
+#: inc/utilities.php:332
 msgid "list child"
 msgstr "קטגוריות של חדשות"
 

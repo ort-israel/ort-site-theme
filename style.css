@@ -3348,6 +3348,17 @@ table {
   text-align: center;
 }
 
+@media screen and (max-width: 767px) {
+  #wpfront-scroll-top-container {
+    z-index: 999999;
+    bottom: 1.5rem !important;
+    background-color: #fff;
+    padding: 0.8rem 0.5rem 0.5rem;
+    max-width: 3.7rem;
+    max-height: 3.7rem;
+  }
+}
+
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
@@ -4782,6 +4793,17 @@ table {
     transform: scale(0.9);
   }
 }
+@media screen and (min-width: 767px) and (max-width: 1025px) {
+  .page .posts-navigation,
+.category .posts-navigation,
+.search .posts-navigation,
+.search-no-results .posts-navigation,
+.tag .posts-navigation,
+.error404 .posts-navigation,
+.archive:not(.category) .posts-navigation {
+    margin-top: 3.5rem;
+  }
+}
 @media screen and (min-width: 1025px) {
   .page .posts-navigation,
 .category .posts-navigation,
@@ -5858,6 +5880,7 @@ table {
   .category-videort .articles,
 .category-newsletter .articles {
     display: flex;
+    flex-wrap: wrap;
   }
   .category-videort div.post,
 .category-newsletter div.post {
@@ -6956,8 +6979,13 @@ table {
 .site-footer .site-info {
   background-color: #313131;
   color: #fff;
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 3rem 6rem;
   text-align: center;
+}
+@media screen and (min-width: 767px) {
+  .site-footer .site-info {
+    padding-bottom: 1.5rem;
+  }
 }
 
 body {

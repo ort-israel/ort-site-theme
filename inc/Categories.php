@@ -75,6 +75,18 @@ class Categories {
 					$classes[] = 'category-horizontal';
 				}
 			}
+
+			// Tsofiya: Add the class of the parent, so the post items would get the correct css
+            $parent_category = get_category($term->category_parent);
+			if( property_exists($parent_category, 'slug')){
+                if($parent_category->slug == 'newsletter'){
+                    $classes[] = 'category-newsletter';
+                }
+                else if($parent_category->slug == 'videort'){
+                    $classes[] = 'category-videort';
+                }
+            }
+
 		}
 		elseif (is_page()){
             $cat_kind = get_field( 'add class', $term );

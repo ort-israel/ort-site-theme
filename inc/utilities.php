@@ -322,24 +322,38 @@ class utilities {
 		echo '</div>'; //.expert-details
 	}
 
-	/* display all children categories of specific category also in every child we get the list
-	   "correspondence category" */
+	/* display all children categories of specific category also in every child we get the list */
 
-	public function list_categories( $term, $term_child ) {
-		$cat_children = get_categories( array( 'child_of' => $term->term_id ) );
+	public function list_categories( $term, $term_child, $general_tab = 'all', $order = 'ASC' ) {
+		$cat_children = get_categories( array( 'parent' => $term->term_id, 'order' => $order) ); //'parent' returns only direct children of the category
+		$list = '';
 		echo '<div class="mobile-current"><span></span><i class="fas fa-angle-down"></i></div>';
 		echo '<ul class="list-categories" aria-label="'.__('list child','ort_site_2019').'">';
-		foreach ( $cat_children as $children ) {
-			if ( $term_child->term_id == $children->term_id ) {
+		// "All Posts" item
+        echo '<li class="child ';
+        if($term->term_id === $term_child->term_id){
+            echo 'current';
+        }
+        echo '">';
+        printf( '<a href="%1$s">%2$s</a>',
+            esc_url( get_category_link( $term->term_id ) ),
+            __($general_tab, 'ort_site_2019')
+        );
+        echo '</li>';
+
+        // Children
+		foreach ( $cat_children as $child ) {
+			if ( $term_child->term_id == $child->term_id ) {
 				echo '<li class="child current">';
 			} else {
 				echo '<li class="child">';
 			}
 			printf( '<a href="%1$s">%2$s</a>',
-				esc_url( get_category_link( $children->term_id ) ),
-				esc_html( $children->name )
+				esc_url( get_category_link( $child->term_id ) ),
+				esc_html( $child->name )
 			);
 			echo '</li>';
+
 		}
 		echo '</ul>';
 	}
