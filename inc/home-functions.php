@@ -212,23 +212,23 @@ function newsletter_zone() {
 	global $utils;
 	$idObj         = get_category_by_slug( 'newsletter' );
 	$id_newsletter = $idObj->term_id;
-	$cat_children  = get_categories( array( 'child_of' => $id_newsletter ) );
 
 	echo '<div class="newsletter">';
-
 	echo '<ul class="important-posts">';
-	foreach ( $cat_children as $children ) {
-		$args      = array(
-			'posts_per_page' => 4,
-			'category__in'   => array( $children->term_id )
-		);
-		$cat_query = new WP_Query( $args );
-		while ( $cat_query->have_posts() ) : $cat_query->the_post();
-			set_query_var( 'utils', $utils );
-			set_query_var( 'thumbnail_size', 'rectangle_narrow' );
-			get_template_part( 'template-parts/content', 'link' );
-		endwhile;
-	}
+
+    /* Display 4 posts from newsletter category (including its sub categories) */
+    $args      = array(
+        'posts_per_page' => 4,
+        'cat'   => array( $id_newsletter )
+    );
+
+    $cat_query = new WP_Query( $args );
+
+    while ( $cat_query->have_posts() ) : $cat_query->the_post();
+        set_query_var( 'utils', $utils );
+        set_query_var( 'thumbnail_size', 'rectangle_narrow' );
+        get_template_part( 'template-parts/content', 'link' );
+    endwhile;
 
 	echo '</ul>';
 	echo '</div>';
@@ -241,22 +241,22 @@ function videort_zone() {
 	global $utils;
 	$idObj         = get_category_by_slug( 'videort' );
 	$id_videort = $idObj->term_id;
-	$cat_children  = get_categories( array( 'child_of' => $id_videort ) );
 
 	echo '<div class="newsletter">';
-
 	echo '<section class="important-posts">';
-	foreach ( $cat_children as $children ) {
-		$args      = array(
-			'posts_per_page' => 4,
-			'category__in'   => array( $children->term_id )
-		);
-		$cat_query = new WP_Query( $args );
-		while ( $cat_query->have_posts() ) : $cat_query->the_post();
-			set_query_var( 'utils', $utils );
-			get_template_part( 'template-parts/content', 'link' );
-		endwhile;
-	}
+
+	/* Display 4 posts from videort category (including its sub categories) */
+    $args      = array(
+        'posts_per_page' => 4,
+        'cat'   => array( $id_videort )
+    );
+
+    $cat_query = new WP_Query( $args );
+
+    while ( $cat_query->have_posts() ) : $cat_query->the_post();
+        set_query_var( 'utils', $utils );
+        get_template_part( 'template-parts/content', 'link' );
+    endwhile;
 
 	echo '</section>';
 	echo '</div>';
