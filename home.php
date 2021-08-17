@@ -19,7 +19,7 @@ get_header();
 
      <?php echo do_shortcode('[elementor-template id="281"]'); ?>
      <div class="startup-edu-logo"></div>
-     <?php echo file_get_contents(get_template_directory_uri()."/images/splash.svg"); ?>
+	 <?php get_template_part( 'images/logo', 'splash.svg' ); ?>
 
  </section>
 
