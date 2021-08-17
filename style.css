@@ -1172,22 +1172,22 @@ body.arial_font_on .fas {
 }
 @media screen and (max-width: 767px) {
   .main-image .background-mainimg {
-    height: 34rem;
+    height: 36rem;
     background-size: auto 46rem;
     background-position: -9rem 0rem;
   }
 }
 @media screen and (min-width: 767px) and (max-width: 1024px) {
   .main-image .background-mainimg {
-    height: 40rem !important;
+    height: 42rem !important;
     background-size: 122rem auto;
-    background-position: 0 0;
+    background-position: 50% 0;
   }
 }
 @media screen and (min-width: 1025px) {
   .main-image .background-mainimg {
     height: 82rem !important;
-    background-position: 0 0;
+    background-position: 50% 0;
   }
 }
 .main-image .background-mainimg > * {
@@ -1302,7 +1302,7 @@ body.arial_font_on .fas {
 }
 @media screen and (max-width: 767px) {
   .main-image .splash {
-    right: -18.5rem;
+    right: -14rem;
     bottom: -8.5rem;
     transform: scale(1.6);
   }
@@ -1314,7 +1314,7 @@ body.arial_font_on .fas {
 @media screen and (min-width: 767px) and (max-width: 1024px) {
   .main-image .splash {
     right: -0.5rem;
-    bottom: -1.9rem;
+    bottom: -0.9rem;
     transform: scale(1.7);
   }
   .main-image .splash _:-ms-fullscreen, :root .main-image .splash {
@@ -1413,6 +1413,8 @@ body.arial_font_on .fas {
 @media screen and (min-width: 1025px) {
   .values-educational .wcp-carousel-main-wrap .slick-list {
     padding: 5rem 0;
+    height: auto !important;
+    /* Lea 2021: override height given inline (I don't know from where)*/
   }
   .values-educational .wcp-carousel-main-wrap .slick-list .slick-slide {
     padding-right: 5rem;
@@ -4144,8 +4146,11 @@ table {
 .postid-29813.elementor-page section.administration section:first-of-type p {
   font-family: open_sans_hebrew_condensedBold;
 }
-.postid-29813.elementor-page section.administration section:nth-of-type(even), .postid-29813.elementor-page section.administration section:nth-of-type(even) .phone a {
+.postid-29813.elementor-page section.administration section:nth-of-type(even) {
   background-color: #f5f5f5;
+}
+.postid-29813.elementor-page section.administration section .phone a {
+  background-color: transparent;
 }
 .postid-29813.elementor-page section.administration section .elementor-widget-wrap {
   align-content: center;
@@ -4175,10 +4180,11 @@ table {
   position: relative;
 }
 .postid-29813.elementor-page section.administration section .phone a.elementor-button-link:after {
-  position: relative;
+  position: absolute;
   font-family: FontAwesome;
   content: "";
-  left: -0.5rem;
+  left: -2.5rem;
+  top: 0;
   /* Edge support */
 }
 @supports (-ms-ime-align: auto) {
@@ -5561,6 +5567,11 @@ table {
 .page-id-28995 .project {
   margin: 0 3rem 7rem;
 }
+.page-id-11 .project img,
+.page-id-28995 .project img {
+  max-height: 38rem;
+  object-fit: cover;
+}
 @media screen and (max-width: 767px) {
   .page-id-11 .project .elementor-row,
 .page-id-28995 .project .elementor-row {
@@ -6901,7 +6912,7 @@ table {
   visibility: hidden;
 }
 .site-footer .wpcf7-form p:first-of-type {
-  width: calc(100% - 8rem);
+  width: calc(100% - 14rem);
 }
 .site-footer .wpcf7-form .wpcf7-email {
   border: 1px solid white;
