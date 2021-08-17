@@ -73,10 +73,11 @@ jQuery(document).ready(function ($) {
 
     $('.sub-menu').each(function(){
         var parent_li = $(this).parent(),
+            //parent_li_padding_right = parent_li.css('padding-right'),
+            //parent_li_padding_left = parent_li.css('padding-left'),
+            //parent_li_width = parent_li.width(),
+            parent_li_outerwidth = parent_li.outerWidth(),
             parent_li_offset = parent_li.offset(),
-            parent_li_padding_right = parent_li.css('padding-right'),
-            parent_li_padding_left = parent_li.css('padding-left'),
-            parent_li_width = parent_li.width(),
             parent_li_offset_left = parent_li_offset.left;
 
         // When the screen is very large there are margins to the site. We need to decrease the left margin from the
@@ -88,17 +89,18 @@ jQuery(document).ready(function ($) {
         }
 
         // Remove the 'px' from the strings and convert to int
-        parent_li_padding_right = parseInt( parent_li_padding_right.substr(0, parent_li_padding_right.length-2));
-        parent_li_padding_left = parseInt( parent_li_padding_left.substr(0, parent_li_padding_left.length-2));
+        //parent_li_padding_right = parseInt( parent_li_padding_right.substr(0, parent_li_padding_right.length-2));
+        //parent_li_padding_left = parseInt( parent_li_padding_left.substr(0, parent_li_padding_left.length-2));
 
-        var parent_li_right_side = parent_li_offset_left + parent_li_width + parent_li_padding_right + parent_li_padding_left,
+        //var parent_li_right_side = parent_li_offset_left + parent_li_width + parent_li_padding_right + parent_li_padding_left,
+        var parent_li_right_side = parent_li_offset_left + parent_li_outerwidth,
             parent_li_right_offset = header_full_width - parent_li_right_side,
             submenu_width = $(this).width(), //if we want the width to get the correct value it should be known when the document is loaded and not when hoverring the element
             padding_left = header_full_width - (submenu_width + parent_li_right_offset);
 
-        //Set the css to the current ".sub-menu" item
-        $(this).css('right',-parent_li_right_offset);
-        $(this).css('padding-right',Math.floor(parent_li_right_offset));
+        //Set the css to the current ".sub-menu" item, the padding of the li-s inside .sub-menu should be taken into account
+        $(this).css('right', -parent_li_right_offset );
+        $(this).css('padding-right', parent_li_right_offset );
         $(this).css('padding-left', padding_left);
     });
 
